@@ -8,7 +8,9 @@ pipeline {
                     echo "Multiline shell steps works too"
                     ls -lah
                 '''
-            }
+                retry(3) {
+                    sh 'echo "Hello!!!"'
+                }
         }
     }
 }

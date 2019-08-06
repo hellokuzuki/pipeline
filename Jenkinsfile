@@ -8,8 +8,10 @@ pipeline {
         }
     }
     post {
-        always {
-            junit 'build/reports/**/*.xml'
+        failure {
+            mail to: 'miximixi_wang@hotmail.com',
+                 subject: "Failed Pipeline: ${currentBuild.fullDisplayName}",
+                 body: "Something is wrong with ${env.BUILD_URL}"
         }
     }
 }

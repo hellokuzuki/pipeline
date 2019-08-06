@@ -1,11 +1,13 @@
 pipeline {
-    agent {
-        docker { image 'node:7-alpine'}
+    agent any
+    environment {
+        DISABLE_AUTH = 'true'
+        DB_ENGINE    = 'sqlite'
     }
     stages {
-        stage('TEST') {
+        stage('Build') {
             steps {
-                sh 'node --version'
+                sh 'printenv'
             }
         }
     }
